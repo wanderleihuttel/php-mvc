@@ -1,1 +1,5 @@
 body {background: #FFF;}
+p.breakline {
+    white-space: pre-wrap;
+    word-break: normal;
+}
