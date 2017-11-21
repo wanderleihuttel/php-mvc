@@ -12,20 +12,24 @@
          <li class="nav-item">
             <a class="nav-link" href="<?php echo URL_ROOT;?>/pages/about">About</a>
          </li>
+          <?php if( isset($_SESSION['user_id'])) : ?>
+         <li class="nav-item">
+            <a class="nav-link" href="<?php echo URL_ROOT;?>/users/logout">Logout</a>
+         </li>
+          <?php endif; ?>
       </ul>
    
       <ul class="navbar-nav mr-right">
-          <?php if( isset($_SESSION['user_id'])) : ?>
-              <li class="nav-item">
-                  <a class="nav-link" href="<?php echo URL_ROOT;?>/users/logout">Logout</a>
-              </li>
-          
-          <?php else : ?>
+      <?php if( isset($_SESSION['user_id'])) : ?>
+      <span class="navbar-text">
+      Logged User: <?php echo $_SESSION['user_name'];?>
+      </span>
+      <?php else : ?>
          <li class="nav-item">
-            <a class="nav-link" href="<?php echo URL_ROOT;?>/users/register">Sign in </a>
+             <a class="nav-link" href="<?php echo URL_ROOT;?>/users/register">Sign in </a>
          </li>
          <li class="nav-item">
-            <a class="nav-link" href="<?php echo URL_ROOT;?>/users/login">Login</a>
+             <a class="nav-link" href="<?php echo URL_ROOT;?>/users/login">Login</a>
          </li>
          <?php endif; ?>
       </ul>

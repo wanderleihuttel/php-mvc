@@ -25,7 +25,6 @@
                <input type="password" name="confirm_password" class="form-control form-control <?php echo (!empty($data['confirm_password_err'])) ? 'is-invalid' : '';?>" value="<?php echo $data['confirm_password']; ?>">
                <span class="invalid-feedback"><?php echo $data['confirm_password_err']; ?></span>
             </div>
-            
             <div class="row">
                <div class="col">
                   <input type="submit" value="Register" class="btn btn-success btn-block"/>
@@ -33,11 +32,9 @@
                <div class="col">
                   <a href="<?php echo URL_ROOT; ?>/users/login" class="btn btn-light btn-block">Have an account? Login</a>
                </div>
-               
             </div>
-            
          </form>
-         
    </div>
 </div>
 <?php require APP_ROOT . '/views/inc/footer.php' ?>
+
