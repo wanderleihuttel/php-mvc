@@ -9,20 +9,27 @@
          <li class="nav-item">
             <a class="nav-link" href="<?php echo URL_ROOT;?>">Home</a>
          </li>
-         <li class="nav-item">
-            <a class="nav-link" href="<?php echo URL_ROOT;?>/pages/about">About</a>
-         </li>
           <?php if( isset($_SESSION['user_id'])) : ?>
+         <li class="nav-item">
+             <a class="nav-link" href="<?php echo URL_ROOT;?>/users">Users</a>
+         </li>
          <li class="nav-item">
             <a class="nav-link" href="<?php echo URL_ROOT;?>/users/logout">Logout</a>
          </li>
           <?php endif; ?>
+          <li class="nav-item">
+              <a class="nav-link" href="<?php echo URL_ROOT;?>/pages/about">About</a>
+          </li>
       </ul>
    
       <ul class="navbar-nav mr-right">
       <?php if( isset($_SESSION['user_id'])) : ?>
+      <li class="nav-item">
+          <a class="nav-link" href="<?php echo URL_ROOT;?>/users/changepassword">Change password</a>
+      </li>
+      
       <span class="navbar-text">
-      Logged User: <?php echo $_SESSION['user_name'];?>
+          | <b>Logged User:</b> <?php echo $_SESSION['user_name'];?>
       </span>
       <?php else : ?>
          <li class="nav-item">

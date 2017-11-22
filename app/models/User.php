@@ -6,7 +6,7 @@
 
         public function __construct()
         {
-          $this->db = new Database();
+            $this->db = new Database();
         }
 
         public function register($data)
@@ -17,7 +17,7 @@
             $this->db->bind(':email', $data['email']);
             $this->db->bind(':password', $data['password']);
             // Execute
-            if( $this->db->execute() ){
+            if ( $this->db->execute() ) {
                 return true;
             } else {
                 return false;
@@ -31,7 +31,21 @@
             $row = $this->db->single();
 
             $hashed_password = $row->password;
-            if( password_verify($password,$hashed_password) ){
+            if ( password_verify($password,$hashed_password) ) {
+                return $row;
+            } else {
+                return false;
+            }
+        }
+    
+        public function checkPassword($email,$password)
+        {
+            $this->db->query('SELECT * from users where email = :email');
+            $this->db->bind(':email', $email);
+            $row = $this->db->single();
+    
+            $hashed_password = $row->password;
+            if ( password_verify($password,$hashed_password) ) {
                 return $row;
             } else {
                 return false;
@@ -46,9 +60,9 @@
             $this->db->single();
 
             // Check row
-            if( $this->db->rowCount() > 0 ){
+            if ( $this->db->rowCount() > 0 ) {
                 return true;
-            } else{
+            } else {
                 return false;
             }
         }
@@ -60,4 +74,24 @@
             $this->db->bind(':id', $id);
             return $this->db->single();
         }
-    }
+    
+        public function updatePassword($data)
+        {
+            $this->db->query('UPDATE users SET password = :password where email = :email');
+            // Bind values
+            $this->db->bind(':password', $data['password']);
+            $this->db->bind(':email', $data['email']);
+            // Execute
+            if( $this->db->execute() ){
+                return true;
+            } else {
+                return false;
+            }
+        }
+    
+        public function getUsers()
+        {
+            $this->db->query('SELECT * FROM users');
+            return $this->db->resultSet();
+    
+        }    }
