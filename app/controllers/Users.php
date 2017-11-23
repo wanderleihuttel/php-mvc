@@ -121,17 +121,14 @@
                 // Validate email
                 if ( empty($data['email']) ) {
                     $data['email_err'] = 'Please inform your email';
+                } else if (! $this->userModel->getUserByEmail($data['email']) ) {
+                    // User not found
+                    $data['email_err'] = 'No user found!';
                 }
 
                 // Validate password
                 if ( empty($data['password']) ) {
                     $data['password_err'] = 'Please inform your password';
-                }
-
-                // Check for user/email
-                if (! $this->userModel->getUserByEmail($data['email']) ) {
-                   // User not found
-                   $data['email_err'] = 'No user found!';
                 }
 
                 //Make sure are empty
@@ -143,8 +140,12 @@
                         // Create session
                         $this->createUserSession($userAuthenticated);
                     } else {
-                        $data['email_err'] = 'Email or Password are incorrect';
-                        $data['password_err'] = 'Email or Password are incorrect';
+                        $data = [
+                            'email' => trim($_POST['email']),
+                            'password' => '',
+                            'email_err' => 'Email or Password are incorrect',
+                            'password_err' => 'Email or Password are incorrect',
+                        ];
                         $this->view('users/login', $data);
                     }
                 } else {
