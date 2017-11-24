@@ -6,40 +6,39 @@
    
    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
-         <li class="nav-item">
+          <li class="nav-item">
             <a class="nav-link" href="<?php echo URL_ROOT;?>">Home</a>
-         </li>
+          </li>
           <?php if( isset($_SESSION['user_id'])) : ?>
-         <li class="nav-item">
-             <a class="nav-link" href="<?php echo URL_ROOT;?>/users">Users</a>
-         </li>
+          <li class="nav-item">
+              <a class="nav-link" href="<?php echo URL_ROOT;?>/users">Users</a>
+          </li>
           <?php endif; ?>
           <li class="nav-item">
               <a class="nav-link" href="<?php echo URL_ROOT;?>/pages/about">About</a>
           </li>
-          <?php if( isset($_SESSION['user_id'])) : ?>
-              <li class="nav-item">
-                  <a class="nav-link" href="<?php echo URL_ROOT;?>/users/logout">Logout</a>
-              </li>
-          <?php endif; ?>
       </ul>
-   
-      <ul class="navbar-nav mr-right">
-      <?php if( isset($_SESSION['user_id'])) : ?>
-      <li class="nav-item">
-          <a class="nav-link" href="<?php echo URL_ROOT;?>/users/changepassword">Change password</a>
-      </li>
       
-      <span class="navbar-text">
-          | <b>Logged User:</b> <?php echo $_SESSION['user_name'];?>
-      </span>
-      <?php else : ?>
-         <li class="nav-item">
-             <a class="nav-link" href="<?php echo URL_ROOT;?>/users/register">Sign in </a>
-         </li>
-         <li class="nav-item">
-             <a class="nav-link" href="<?php echo URL_ROOT;?>/users/login">Login</a>
-         </li>
-         <?php endif; ?>
+      <ul class="navbar-nav mr-right">
+          <?php if( isset($_SESSION['user_id'])) : ?>
+          <span class="navbar-text pl-5">User logged:</span>
+          <li class="nav-item dropdown pr-5">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-user"></i> <?php echo $_SESSION['user_name'];?>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="<?php echo URL_ROOT;?>/users/changepassword"><i class="fa fa-key"></i> Change password</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="<?php echo URL_ROOT;?>/users/logout"><i class="fa fa-power-off"></i> Logout</a>
+              </div>
+          </li>
+          <?php else : ?>
+          <li class="nav-item">
+              <a class="nav-link" href="<?php echo URL_ROOT;?>/users/login">Login</a>
+          </li>
+          <li class="nav-item">
+             <a class="nav-link" href="<?php echo URL_ROOT;?>/users/register"><i class="fa fa-sign-in"></i> Sign in </a>
+          </li>
+          <?php endif; ?>
       </ul>
 </nav>
