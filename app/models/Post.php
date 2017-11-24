@@ -26,7 +26,14 @@
            $this->db->bind(':id',$id);
            return $this->db->single();
        }
-
+    
+        public function getPostByUserId($user_id)
+        {
+            $this->db->query('select count(*) as total from posts where user_id = :user_id');
+            $this->db->bind(':user_id',$user_id);
+            return $this->db->single();
+        }
+       
        public function addPost($data)
        {
            $this->db->query('INSERT INTO posts (user_id, title, body) values (:user_id, :title, :body)');

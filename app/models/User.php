@@ -23,7 +23,36 @@
                 return false;
             }
         }
-
+    
+        public function addUser($data)
+        {
+            $this->db->query('INSERT INTO users (name, email, password) values (:name, :email, :password)');
+            // Bind values
+            $this->db->bind(':name', $data['name']);
+            $this->db->bind(':email', $data['email']);
+            $this->db->bind(':password', $data['password']);
+            // Execute
+            if ( $this->db->execute() ) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    
+        public function deleteUser($id)
+        {
+            $this->db->query('DELETE FROM users where id = :id');
+            // Bind values
+            $this->db->bind(':id', $id);
+        
+            // Execute
+            if( $this->db->execute() ){
+                return true;
+            } else {
+                return false;
+            }
+        }
+        
         public function login($email,$password)
         {
             $this->db->query('SELECT * from users where email = :email');
