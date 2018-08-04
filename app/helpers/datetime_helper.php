@@ -1,5 +1,4 @@
 <?php
-
     /*
     * Helper to format date/time
     */

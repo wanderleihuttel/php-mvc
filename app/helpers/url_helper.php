@@ -3,6 +3,5 @@
     * Helper url redirect
     */
     function redirect( $page ){
-        header('location: ' .URL_ROOT . '/' . $page);
+        header('Location: ' .URL_ROOT . '/' . $page);
     }
-
