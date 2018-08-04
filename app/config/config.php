@@ -1,5 +1,4 @@
 <?php
-
     // Database Params
     define('DB_HOST','localhost');
     define('DB_USER','mvc');
@@ -10,13 +9,10 @@
     // App Root
     define('APP_ROOT', dirname(dirname(__FILE__)));
     // URL Root
-    define('URL_ROOT','http://192.168.1.1/mvc');
+    define('URL_ROOT','http://192.168.1.87/php-mvc');
     // Site Name
     define('SITE_NAME', 'MVC/PHP');
     // App Version
-    define('APP_VERSION', '1.0.0');
-    define('APP_DATE', 'NOV 20, 2017');
-
+    define('APP_VERSION', '1.0.1');
+    define('APP_DATE', 'AUG 02, 2018');
     define('APP_DATE_TIME_FORMAT', 'd/m/Y H:i:s');
-
-
